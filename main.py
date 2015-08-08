@@ -36,10 +36,9 @@ def submit():
 
     #render dashboard
     if user_info:
-        for i in user_info["all_classes"]:
-          new_user = { "user": user_info["email"], "p_user_id": user_info["user_id"], "classes": i}
-          result = fb.post('/users', new_user)
-          user_id = new_user["p_user_id"]
+        new_user = { "user": user_info["email"], "p_user_id": user_info["user_id"], "classes": user_info["all_classes"]}
+        result = fb.post('/users', new_user)
+        user_id = new_user["p_user_id"]
         return render_template('dashboard.html', result=new_user)
     if info:
        return render_template('chat.html', info=info)
@@ -63,6 +62,7 @@ def dash():
                 for i in item[key]:
                     if "name" == i:
                         li.append(item[key][i])
+
 
     return flask.render_template('new_chat.html', result=li)
 
