@@ -34,7 +34,7 @@ def submit():
 
     #render dashboard
     if info:
-       return render_template('dashboard.html', info=info)
+       return render_template('chat.html', info=info)
     else:
        return render_template('dashboard.html', info="Error!"+ info)
 
