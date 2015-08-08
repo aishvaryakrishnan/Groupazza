@@ -34,9 +34,18 @@ def submit():
 
     #render dashboard
     if info:
-       return render_template('dashboard.html', info=info)
+       return render_template('dashboard.html', info=cj)
     else:
        return render_template('dashboard.html', info="Error!"+ info)
+
+@APP.route('/dashboard')
+def dash():
+    flask.render_template('dashboard.html')
+
+    content_url = 'https://piazza.com/logic/api?method=user.user_info'
+    content_data = '{"method":"content.get"'
+    content_resp = opener.open(content_url, content_data)
+    user = content_resp.read()
 
 
 
