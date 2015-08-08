@@ -4,7 +4,7 @@ from sseclient import SSEClient
 import json
 import time
 
-FIREBASE_URL = "https://.firebaseio.com/"
+FIREBASE_URL = "https://fpr-app.firebaseio.com/"
 
 
 def poll_chat():
@@ -66,8 +66,3 @@ if __name__ == '__main__':
                     "message": message,
                     ".priority": time.time() * 1000
                 })
-
-
-
-
-
