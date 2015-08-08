@@ -1,6 +1,6 @@
 from firebase import firebase
 
-FIREBASE_URL = "https://dazzling-fire-5952.firebaseio.com/"
+FIREBASE_URL = "https://fpr-app.firebaseio.com/"
 
 # Main
 if __name__ == '__main__':
