@@ -35,17 +35,14 @@ def submit():
     user_info = p.get_user_profile()
 
     #render dashboard
-<<<<<<< HEAD
     if user_info:
         for i in user_info["all_classes"]:
           new_user = { "user": user_info["email"], "p_user_id": user_info["user_id"], "classes": i}
           result = fb.post('/users', new_user)
           user_id = new_user["p_user_id"]
         return render_template('dashboard.html', result=new_user)
-=======
     if info:
        return render_template('chat.html', info=info)
->>>>>>> 376992032381373f112c82fe686c5c4e18bc34b3
     else:
        return render_template('dashboard.html', info="Error!")
 
