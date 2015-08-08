@@ -1,15 +1,21 @@
 import flask
 import urllib2
-from cookielib import CookieJar
 from flask import Flask, render_template, request, url_for
 import json
+from firebase import firebase
+from piazza_api import Piazza
+import urllib
+import simplejson as json
 
-cj = CookieJar()
-opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
+p = Piazza()
+user_login = ""
 
+fb = firebase.FirebaseApplication('https://fpr-app.firebaseio.com/', None)
 
 # Create the application.
 APP = Flask(__name__)
+
+user_id = ""
 
 @APP.route('/')
 def index():
@@ -19,33 +25,46 @@ def index():
 def login():
     return flask.render_template('login.html')
 
-@APP.route('/submit/', methods=['POST'])
+@APP.route('/submit', methods=['POST'])
 def submit():
     email = request.form["email"]
     password = request.form["password"]
 
-    # login to Piazza.
-    login_url = 'https://piazza.com/logic/api?method=user.login'
-    login_data = '{"method":"user.login","params":{"email":"'+email+'","pass":"'+password+'"}}'
-
-    login_resp = opener.open(login_url, login_data)
-
-    info = json.loads(login_resp.read())
+    global user_login
+    user_login = p.user_login(email=email, password=password)
+    user_info = p.get_user_profile()
 
     #render dashboard
-    if info:
-       return render_template('dashboard.html', info=cj)
+    if user_info:
+        for i in user_info["all_classes"]:
+          new_user = { "user": user_info["email"], "p_user_id": user_info["user_id"], "classes": i}
+          result = fb.post('/users', new_user)
+          user_id = new_user["p_user_id"]
+        return render_template('dashboard.html', result=new_user)
     else:
-       return render_template('dashboard.html', info="Error!"+ info)
+       return render_template('dashboard.html', info="Error!")
 
-@APP.route('/dashboard')
+@APP.route('/new_chat')
 def dash():
-    flask.render_template('dashboard.html')
+    users = json.loads(json.dumps(fb.get('/users', None)))
+    u = ""
+    mlist = []
+    for user in users:
+        for u in users[user]:
+            if u == "classes":
+              mlist.append(users[user][u])
+             # class1 = p.network(mlist[0])
+    li = []
+    for index, item in enumerate(mlist):
+        if isinstance(item, dict):
+            for key in item:
+                for i in item[key]:
+                    if "name" == i:
+                        li.append(item[key][i])
 
-    content_url = 'https://piazza.com/logic/api?method=user.user_info'
-    content_data = '{"method":"content.get"'
-    content_resp = opener.open(content_url, content_data)
-    user = content_resp.read()
+    return flask.render_template('new_chat.html', result=li)
+
+
 
 
 
