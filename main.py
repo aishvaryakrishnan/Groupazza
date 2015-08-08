@@ -34,11 +34,22 @@ def submit():
 
     #render dashboard
     if info:
-       return render_template('chat.html', info=info)
+       return render_template('dashboard.html', info=info)
     else:
-       return render_template('dashboard.html', info="Error!"+ info)
+       return render_template('chat.html', info="Error!"+ info)
 
+@APP.route('/dashboard/', methods=['POST'])
+def dashboard():
+    return flask.render_template('dashboard.html')
 
+@APP.route('/chat/', methods=['POST'])
+def chat():
+    return flask.render_template('chat.html')
+
+@APP.route('/create/', methods=['POST'])
+def create():
+    # returns some action that updates chat.html
+    pass
 
 if __name__ == '__main__':
     APP.debug=True
