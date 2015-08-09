@@ -46,22 +46,24 @@ def submit():
         mlist = []
         users1 = json.loads(json.dumps(fb.get('/users', fire_user_id)))
         classes = ""
-        for class1 in users1:
-                classes = users[class1]['classes']['group']
-        for user in users:
-            global fire_user_id
-            fire_user_id = user
-            for u in users[user]:
-                if u == "classes":
-                  mlist.append(users[user][u])
+        if users1:
+            for class1 in users1:
+                if 'classes' in users[class1]:
+                    classes = users[class1]['classes']['group']
+            for user in users:
+                global fire_user_id
+                fire_user_id = user
+                for u in users[user]:
+                    if u == "classes":
+                        mlist.append(users[user][u])
                  # class1 = p.network(mlist[0])
-        li = []
-        for index, item in enumerate(mlist):
-            if isinstance(item, dict):
-                for key in item:
-                    for i in item[key]:
-                        if "name" == i:
-                            li.append(item[key][i])
+            li = []
+            for index, item in enumerate(mlist):
+                if isinstance(item, dict):
+                    for key in item:
+                        for i in item[key]:
+                            if "name" == i:
+                                li.append(item[key][i])
         return render_template('dashboard.html', user=new_user, courses=li, u_classes=classes)
 
 @APP.route('/new_chat') 
