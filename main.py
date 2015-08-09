@@ -47,7 +47,7 @@ def submit():
         users1 = json.loads(json.dumps(fb.get('/users', fire_user_id)))
         classes = ""
         for class1 in users1:
-                classes = (users[class1]['classes']['group'])
+                classes = users[class1]['classes']['group']
         for user in users:
             global fire_user_id
             fire_user_id = user
