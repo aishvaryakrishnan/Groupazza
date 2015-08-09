@@ -64,7 +64,7 @@ def submit():
                             li.append(item[key][i])
         return render_template('dashboard.html', user=new_user, courses=li, u_classes=classes)
 
-@APP.route('/new_chat') 
+@APP.route('/new_chat')
 def dash():
     users = json.loads(json.dumps(fb.get('/users', fire_user_id)))
     classes = []
