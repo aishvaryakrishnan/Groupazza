@@ -1,0 +1,29 @@
+<head>
+<meta charset="utf-8" />
+  <title>Login</title>
+  <link type="text/css" rel="stylesheet"
+        href="{{ url_for('static',
+              filename='style.css')}}" />
+</head>
+<body style="background: #3e7aab;">
+
+
+<div style="position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);">
+	<h1 style="font-family: Avenir; color: #f5f5f5;">Groupazza.</h1>
+	<div >
+		<form method="post" action="{{ url_for('submit') }}">
+		                  <!-- <label for="email">Please enter your email:</label> -->
+		                  <input type="text" placeholder="Your email here" name="email" /><br />
+		                  <!-- <label for="password">Please enter your password:</label> -->
+		                  <input type="password" placeholder="password" name="password" /><br />
+		                  <br>
+		                  <input type="submit" />
+		</form>
+	</div>
+</div>
+
+</body>
