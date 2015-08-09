@@ -46,6 +46,7 @@ def submit():
         mlist = []
         users1 = json.loads(json.dumps(fb.get('/users', fire_user_id)))
         classes = ""
+        li = []
         if users1:
             for class1 in users1:
                 if 'classes' in users[class1]:
@@ -57,7 +58,6 @@ def submit():
                     if u == "classes":
                         mlist.append(users[user][u])
                  # class1 = p.network(mlist[0])
-            li = []
             for index, item in enumerate(mlist):
                 if isinstance(item, dict):
                     for key in item:
