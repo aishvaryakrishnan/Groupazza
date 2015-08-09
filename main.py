@@ -9,6 +9,7 @@ import simplejson as json
 
 p = Piazza()
 user_login = ""
+fire_user_id = ""
 
 fb = firebase.FirebaseApplication('https://fpr-app.firebaseio.com/', None)
 
@@ -36,13 +37,20 @@ def submit():
 
     #render dashboard
     if user_info:
+        user_info["all_classes"]["group"]=["CS fun group","Discrete math group", "Adv. operating group"]
         new_user = { "user": user_info["email"], "p_user_id": user_info["user_id"], "classes": user_info["all_classes"]}
         result = fb.post('/users', new_user)
         user_id = new_user["p_user_id"]
         users = json.loads(json.dumps(fb.get('/users', None)))
         u = ""
         mlist = []
+        users1 = json.loads(json.dumps(fb.get('/users', fire_user_id)))
+        classes = ""
+        for class1 in users1:
+                classes = (users[class1]['classes']['group'])
         for user in users:
+            global fire_user_id
+            fire_user_id = user
             for u in users[user]:
                 if u == "classes":
                   mlist.append(users[user][u])
@@ -54,34 +62,18 @@ def submit():
                     for i in item[key]:
                         if "name" == i:
                             li.append(item[key][i])
-        return render_template('dashboard.html', user=new_user, courses= li)
-        li = []
-    if info:
-       return render_template('dashboard.html', info=info)
-    else:
-       return render_template('chat.html', info="Error!"+ info)
-       return render_template('dashboard.html', info="Error!")
+        return render_template('dashboard.html', user=new_user, courses=li, u_classes=classes)
 
 @APP.route('/new_chat')
 def dash():
-    users = json.loads(json.dumps(fb.get('/users', None)))
-    u = ""
-    mlist = []
-    for user in users:
-        for u in users[user]:
-            if u == "classes":
-              mlist.append(users[user][u])
-             # class1 = p.network(mlist[0])
-    li = []
-    for index, item in enumerate(mlist):
-        if isinstance(item, dict):
-            for key in item:
-                for i in item[key]:
-                    if "name" == i:
-                        li.append(item[key][i])
+    users = json.loads(json.dumps(fb.get('/users', fire_user_id)))
+    classes = []
+    for class1 in users:
+        for class2 in users[class1]['classes']:
+            classes.append(users[class1]['classes'][class2]['group'])
 
 
-    return flask.render_template('new_chat.html', result=li)
+    return flask.render_template('new_chat.html', result=classes)
 
 
 @APP.route('/dashboard/', methods=['POST'])
