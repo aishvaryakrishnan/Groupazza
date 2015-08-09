@@ -23,12 +23,21 @@
 
     <title>Firebase Chat</title>
 </head>
-<body ng-app="chat">
+<body ng-app="chat" style="background: #366b96;">
 
-<div class="container" ng-controller="ChatController">
+<div class="container" ng-controller="ChatController" style="position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);">
     <div class="row">
-        <div class="col-md-4">
-            <span class="label label-primary">Username: </span><input type="text" class="form-control" ng-model="username">
+        <div class="col-md-4" style="display: inline">
+            <span class="label label-primary">Username: </span>
+            <form method="post" action="{{ url_for('dashboard') }}" style="display:inline"> &nbsp;&nbsp;
+            <input class="btn btn-primary" type="submit" value="Leave group"/>
+        </form>
+        <input type="text" class="form-control" ng-model="username">
+
         </div>
 </div>
     <div class="row">

@@ -57,8 +57,9 @@ def submit():
         return render_template('dashboard.html', user=new_user, courses= li)
         li = []
     if info:
-       return render_template('chat.html', info=info)
+       return render_template('dashboard.html', info=info)
     else:
+       return render_template('chat.html', info="Error!"+ info)
        return render_template('dashboard.html', info="Error!")
 
 @APP.route('/new_chat')
@@ -83,8 +84,18 @@ def dash():
     return flask.render_template('new_chat.html', result=li)
 
 
+@APP.route('/dashboard/', methods=['POST'])
+def dashboard():
+    return flask.render_template('dashboard.html')
 
+@APP.route('/chat/', methods=['POST'])
+def chat():
+    return flask.render_template('chat.html')
 
+@APP.route('/create/', methods=['POST'])
+def create():
+    # returns some action that updates chat.html
+    pass
 
 if __name__ == '__main__':
     APP.debug=True

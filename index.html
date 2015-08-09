@@ -32,16 +32,27 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-
-
+          
 			<div class="nav-collapse collapse navbar-responsive-collapse">
 				<ul class="nav row">
-					<li data-slide="1" class="col-12 col-sm-2"><a id="menu-link-1" href="#slide-1" title="Next Section"><span class="icon icon-home"></span> <span class="text">HOME</span></a></li>
+
+					<li data-slide="1" class="col-12 col-sm-2">
+						<!-- dropdown starts -->
+			<div class="dropdown">
+			  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			    Dropdown
+			    <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+			    <li><a href="#">Action</a></li>
+			    <li><a href="#">Another action</a></li>
+			    <li><a href="#">Something else here</a></li>
+			    <li><a href="#">Separated link</a></li>
+			  </ul>
+			</div>
+			<!-- dropdown ends -->
 					<li data-slide="2" class="col-12 col-sm-2"><a id="menu-link-2" href="#slide-2" title="Next Section"><span class="icon icon-user"></span> <span class="text">ABOUT US</span></a></li>
-					<li data-slide="3" class="col-12 col-sm-2"><a id="menu-link-3" href="#slide-3" title="Next Section"><span class="icon icon-briefcase"></span> <span class="text">PORTFOLIO</span></a></li>
-					<li data-slide="4" class="col-12 col-sm-2"><a id="menu-link-4" href="#slide-4" title="Next Section"><span class="icon icon-gears"></span> <span class="text">PROCESS</span></a></li>
-					<li data-slide="5" class="col-12 col-sm-2"><a id="menu-link-5" href="#slide-5" title="Next Section"><span class="icon icon-heart"></span> <span class="text">CLIENTS</span></a></li>
-					<li data-slide="6" class="col-12 col-sm-2"><a id="menu-link-6" href="#slide-6" title="Next Section"><span class="icon icon-envelope"></span> <span class="text">CONTACT</span></a></li>
+					<!-- <li data-slide="3" class="col-12 col-sm-2"><a id="menu-link-3" href="#slide-3" title="Next Section"><span class="icon icon-briefcase"></span> -->
 				</ul>
 				<div class="row">
 					<div class="col-sm-2 active-menu"></div>
@@ -50,8 +61,43 @@
 		</div><!-- /.container -->
 	</div><!-- /.navbar -->
 
+<div id="wrapper">
+<a href="#menu-toggle" class="btn btn-dark btn-lg toggle" id="menu-toggle"><i class="fa fa-bars"></i></a>
+	<!-- Activity Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Groupazza
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Activity1</a>
+                </li>
+                <li>
+                    <a href="#">Activity2</a>
+                </li>
+                <li>
+                    <a href="#">Activity3</a>
+                </li>
+                <li>
+                    <a href="#">Actiity4</a>
+                </li>
+                <li>
+                    <a href="#">Activity5</a>
+                </li>
+                <li>
+                    <a href="#">Activity6</a>
+                </li>
+                <li>
+                    <a href="#">Activity7</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
 
 	<!-- === MAIN Background === -->
+<div id="page-content-wrapper">
 	<div class="slide story" id="slide-1" data-slide="1">
 		<div class="container">
 			<div id="home-row-1" class="row clearfix">
@@ -91,7 +137,7 @@
                         <h3>Discussion Group</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                         <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+                            <a href="#" class="btn btn-primary">Enter</a> <a href="#" class="btn btn-default">Delete</a>
                         </p>
                     </div>
                 </div>
@@ -104,7 +150,7 @@
                         <h3>Discussion Group</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                         <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+                            <a href="#" class="btn btn-primary">Enter</a> <a href="#" class="btn btn-default">Delete</a>
                         </p>
                     </div>
                 </div>
@@ -117,7 +163,7 @@
                         <h3>Discussion Group</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                         <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+                            <a href="#" class="btn btn-primary">Enter</a> <a href="#" class="btn btn-default">Delete</a>
                         </p>
                     </div>
                 </div>
@@ -130,7 +176,7 @@
                         <h3>Discussion Group</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                         <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+                            <a href="#" class="btn btn-primary">Enter</a> <a href="#" class="btn btn-default">Delete</a>
                         </p>
                     </div>
                 </div>
@@ -143,7 +189,7 @@
                         <h3>Discussion Group</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                         <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+                            <a href="#" class="btn btn-primary">Enter</a> <a href="#" class="btn btn-default">Delete</a>
                         </p>
                     </div>
                 </div>
@@ -156,7 +202,7 @@
                         <h3>Discussion Group</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                         <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+                            <a href="#" class="btn btn-primary">Enter</a> <a href="#" class="btn btn-default">Delete</a>
                         </p>
                     </div>
                 </div>
@@ -197,8 +243,9 @@
 			</div><!-- /row -->
 		</div><!-- /container -->
 	</div><!-- /slide2 -->
-
-
+<<<<<<< HEAD
+</div><!-- site-wrapper for sidebar -->	
+</div>
 
 </body>
 
@@ -228,5 +275,13 @@
 
 	});
 	</script>
+
+	 <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
 
 </html>
