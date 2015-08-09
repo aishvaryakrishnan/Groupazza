@@ -46,7 +46,7 @@ def submit():
        return render_template('chat.html', info="Error!"+ info)
        return render_template('dashboard.html', info="Error!")
 
-@APP.route('/new_chat')
+@APP.route('/new_chat') 
 def dash():
     users = json.loads(json.dumps(fb.get('/users', None)))
     u = ""
@@ -80,6 +80,10 @@ def chat():
 def create():
     # returns some action that updates chat.html
     pass
+
+@APP.route('/statistics/', methods=['POST'])
+def statistics():
+    return flask.render_template('statistics.html')
 
 if __name__ == '__main__':
     APP.debug=True
